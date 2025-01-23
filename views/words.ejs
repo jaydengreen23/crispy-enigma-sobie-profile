@@ -7,5 +7,21 @@
 </head>
 <body>
     <h1>IN EJS</h1>
+
+    <%= pageTitle %>
+
+    <h2>Post Method:</h2>
+    <form method="POST" action="/saveMyName">
+        <input name="myName">
+        <input type="submit" value="save my name!">
+
+    </form>
+    <br>
+    <h2>Get Method:</h2>
+    <form method="GET" action="/saveMyName">
+        <input name="myName">
+        <input type="submit" value="save my name!">
+
+    </form>
 </body>
 </html>
