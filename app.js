@@ -33,12 +33,32 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+//run().catch(console.dir);
 
 
+async function getData(){
 
+  await client.connect();
+  let collection = await client.db("vi-database").collection("vi-collection");
 
+  let results = await collection.find({}).toArray();
+  //  .limit(50)
+  //  .toArray();
+  console.log(results)
+  // res.send(results).status(200);
+  return results;
+}
 
+getData();
+
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData();
+  console.log(getDataResults);
+
+  res.render('zaun',
+  {zaunPeeps: getDataResults});
+
+})
 
 app.get('/', function (req, res) {
   res.sendFile('index.html')
