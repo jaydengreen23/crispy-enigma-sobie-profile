@@ -1,3 +1,28 @@
 <h1>Zaun</h1>
 
-<%=zaunPeeps[0].zaun%>
+<%=zaunPeeps[0].fname%>
+
+
+<section>
+
+</section>
+
+<form method="POST" action="/delete/<%=zaunPeeps[0]._id%>">
+    <%=zaunPeeps[0].zaun%>
+    <p>"/delete/<%=zaunPeeps[0]._id%>"</p>
+    <input type="submit" value="delete my name!">
+
+</form>
+
+<form method="POST" action="/update">
+    <input type="hidden" name="nameID" value=" <%=zaunPeeps[0]._id%>">
+    <input name="inputUpdateName">
+    <input type="submit" value="update my name!">
+
+</form>
+
+<a href="/insert">save my name</a>
+    <form method="POST" action="/insert">
+        <input name="zaun">
+        <input type="submit" value="save my name!">
+    </form>
