@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jayden</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayden's App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
 
 </body>
 
 <main>
+  <div class="container">
+
+
+    <h1>Welcome</h1><br>
+    <h2>Please enter in an insider secret that most would not know about</h2>
     <form method="POST" action="insert/">
-        <input name="title">
-        <input name="post">
-        <button class="btn btn-primary" role="submit">new post</button>
-      </form>
-  
-      
-      <% profileData.forEach(result=> { %>
-        <div class="col-md-8">
-        
-  
-      <form method="POST" action="update/">
-        <input name="updateTitle" value="<%= result.title %>">
-        <input name="updatePost" value="<%= result.post %>"> 
-        <input type="hidden" name="updateId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-pencil">Update</i></button>
-      </form>
-      
-  
-  
-      <form method="POST" action="delete/">
-        <input type="hidden" name="deleteId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-trash3">Delete</i></button>
-      </form>
-  
-  
-    </div>
+      <input name="company" placeholder="Company Name"><br>
+      <input name="secret" placeholder="Secret"><br>
+      <button class="btn btn-danger" role="submit">Share</button><br><br>
+    </form>
+
+
+    <% profileData.forEach(result=> { %>
+      <div class="updates">
+
+
+        <form method="POST" action="update/" style="display: inline;">
+          <input name="updateTitle" value="<%= result.company %>"><br>
+          <input name="updatePost" value="<%= result.secret %>">
+          <input type="hidden" name="updateId" value="<%=result._id %>"><br>
+          <button class="btn btn-danger" role="submit"><i class="bi bi-pencil">Update</i></button>
+        </form>
+
+
+
+        <form method="POST" action="delete/" style="display: inline;">
+          <input type="hidden" name="deleteId" value="<%=result._id %>">
+          <button class="btn btn-danger" role="submit"><i class="bi bi-trash3">Delete</i></button>
+        </form>
+      </div>
+
+
+
       <% }); %>
+  </div>
 </main>
 <footer class="footer bg-body-tertiary text-center text-lg-start fixed-bottom">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2025
+    <a class="text-body" href="https://github.com/jaydengreen23" target="_blank">Jayden</a> |
+    <a href="https://github.com/jaydengreen23/crispy-enigma-sobie-profile" target="_blank">See My Repo</a>
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024
-      <a class="text-body" href="https://mdbootstrap.com/">bc</a> |
-      <a href="https://gist.github.com/assets/22795694/d414efab-a80c-4b31-aeac-9636a0681f41" target="_blank">see my wireframe</a>
-      <!-- Copyright -->
-    </div>
-  </footer>
-  
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
-    <script  src="scripts/script.js"></script>
+  </div>
+</footer>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
+<script src="scripts/script.js"></script>
 
 </html>

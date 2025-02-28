@@ -26,36 +26,6 @@ const client = new MongoClient(uri, {
 const db = "vi-database";
 const mongoCollection = client.db("jaydenSobieProfile").collection("jaydenSobieCollection");
 
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-//run().catch(console.dir);
-
-
-// async function getData(){
-
-//   await client.connect();
-//   let collection = await client.db("vi-database").collection("vi-collection");
-
-//   let results = await collection.find({}).toArray();
-//   //  .limit(50)
-//   //  .toArray();
-//   console.log(results)
-//   // res.send(results).status(200);
-//   return results;
-// }
-
-//getData();
-
 app.get('/read', async function (req, res) {
   let getDataResults = await getData();
   console.log(getDataResults);
@@ -71,20 +41,20 @@ app.get('/', async function (req, res) {
   res.render('profile',{profileData:results});
 })
 
-function initProfileData(){
-  mongoCollection.insertOne({
-    title: "this is blog title",
-    post: "this is the post"
-  });
-}
+// function initProfileData(){
+//   mongoCollection.insertOne({
+//     company: "this is blog title",
+//     secret: "this is the post"
+//   });
+// }
 
-initProfileData();
+
 
   //res.redirect('/ejs');
   app.post('/insert', async (req,res)=> {
     let resuls = await mongoCollection.insertOne({
-      title : req.body.title,
-      post:req.body.post
+      company : req.body.company,
+      secret:req.body.secret
     })
     res.redirect('/');
   }); 
@@ -108,8 +78,8 @@ app.post('/update', async (req,res)=>{
   {_id: ObjectId.createFromHexString(req.body.updateId)}, { 
     $set: 
       {
-        title : req.body.updateTitle, 
-        post : req.body.updatePost 
+        company : req.body.updateTitle, 
+        secret : req.body.updatePost 
       }
      }
   ).then(result => {
